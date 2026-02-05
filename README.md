@@ -26,7 +26,7 @@
 [![Discord](https://img.shields.io/badge/Join%20the%20Discord-5865F2?logo=discord&logoColor=white)](https://discord.gg/vwfwq2EpXJ)
 [![Podcast](https://img.shields.io/badge/Listen%20to%20Podcast-1DB954?logo=spotify&logoColor=white)](https://open.spotify.com/show/1iOZfFVamUk7CJPOvtU00v)
 
-> **TL;DR**: This blog demonstrates how to use GitHub Copilot with Azure MCP servers to automatically generate comprehensive infrastructure documentation from live Azure resources—turning natural language prompts into a full wiki in minutes.
+> **TL;DR**: This blog demonstrates how to use GitHub Copilot (Opus 4.5) with Azure MCP servers to automatically generate comprehensive infrastructure documentation from live Azure resources—turning natural language prompts into a full wiki in minutes.
 
 ---
 
