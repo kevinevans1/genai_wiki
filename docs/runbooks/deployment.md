@@ -22,7 +22,7 @@ docker --version
 
 ### Azure Access
 
-- Access to subscription `AI_Foundry` (`094336d1-8e03-42a4-95dc-1085ed02d8d5`)
+- Access to subscription `AI_Foundry` (`<subscription-id>`)
 - Role: `Contributor` on resource group `rg-artagent-voice-agent-dev`
 - Role: `Key Vault Secrets User` for secret access
 
@@ -98,15 +98,15 @@ terraform apply -var-file="environments/dev.tfvars"
 
 ```bash
 # Login to Azure Container Registry
-az acr login --name crartagenthffwg8l2
+az acr login --name crartagent<suffix>
 
 # Build and push backend
-docker build -t crartagenthffwg8l2.azurecr.io/rtaudio-server:latest ./backend
-docker push crartagenthffwg8l2.azurecr.io/rtaudio-server:latest
+docker build -t crartagent<suffix>.azurecr.io/rtaudio-server:latest ./backend
+docker push crartagent<suffix>.azurecr.io/rtaudio-server:latest
 
 # Build and push frontend
-docker build -t crartagenthffwg8l2.azurecr.io/rtaudio-client:latest ./frontend
-docker push crartagenthffwg8l2.azurecr.io/rtaudio-client:latest
+docker build -t crartagent<suffix>.azurecr.io/rtaudio-client:latest ./frontend
+docker push crartagent<suffix>.azurecr.io/rtaudio-client:latest
 ```
 
 ### Container App Update
@@ -114,15 +114,15 @@ docker push crartagenthffwg8l2.azurecr.io/rtaudio-client:latest
 ```bash
 # Update backend container app
 az containerapp update \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
-  --image crartagenthffwg8l2.azurecr.io/rtaudio-server:latest
+  --image crartagent<suffix>.azurecr.io/rtaudio-server:latest
 
 # Update frontend container app
 az containerapp update \
-  --name artagent-frontend-hffwg8l2 \
+  --name artagent-frontend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
-  --image crartagenthffwg8l2.azurecr.io/rtaudio-client:latest
+  --image crartagent<suffix>.azurecr.io/rtaudio-client:latest
 ```
 
 ---
@@ -134,13 +134,13 @@ az containerapp update \
 ```bash
 # Set configuration value
 az appconfig kv set \
-  --name appconfig-voice-agent-dev-hffwg8l2 \
+  --name appconfig-voice-agent-dev-<suffix> \
   --key "Backend:MaxConcurrentCalls" \
   --value "10"
 
 # Set feature flag
 az appconfig feature set \
-  --name appconfig-voice-agent-dev-hffwg8l2 \
+  --name appconfig-voice-agent-dev-<suffix> \
   --feature "EnableEmailNotifications" \
   --yes
 ```
@@ -150,7 +150,7 @@ az appconfig feature set \
 ```bash
 # Set a secret
 az keyvault secret set \
-  --vault-name kv-hffwg8l2 \
+  --vault-name kv-<suffix> \
   --name "ExternalApiKey" \
   --value "your-secret-value"
 ```
@@ -190,19 +190,19 @@ az keyvault secret set \
 ```bash
 # List revisions
 az containerapp revision list \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --output table
 
 # Activate previous revision
 az containerapp revision activate \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --revision <previous-revision-name>
 
 # Deactivate current revision
 az containerapp revision deactivate \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --revision <current-revision-name>
 ```
@@ -230,13 +230,13 @@ terraform apply
 ```bash
 # View container app details
 az containerapp show \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --query "{name:name, state:properties.runningStatus, replicas:properties.template.scale}"
 
 # View logs
 az containerapp logs show \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --follow
 ```
@@ -275,14 +275,14 @@ requests
 ```bash
 # Check container app environment status
 az containerapp env show \
-  --name cae-artagent-voice-agent-dev-hffwg8l2 \
+  --name cae-artagent-voice-agent-dev-<suffix> \
   --resource-group rg-artagent-voice-agent-dev
 
 # Test Key Vault access
-az keyvault secret list --vault-name kv-hffwg8l2
+az keyvault secret list --vault-name kv-<suffix>
 
 # Check AI service status
 az cognitiveservices account show \
-  --name artagenthffwg8l2aif \
+  --name artagent<suffix>aif \
   --resource-group rg-artagent-voice-agent-dev
 ```

@@ -19,7 +19,7 @@ echo ""
 echo "=== Recent Errors (App Insights) ==="
 # Check Application Insights for recent errors
 az monitor app-insights query \
-  --app ai-hffwg8l2 \
+  --app ai-<suffix> \
   --resource-group $RG \
   --analytics-query "exceptions | where timestamp > ago(1h) | summarize count() by type"
 ```
@@ -36,13 +36,13 @@ az monitor app-insights query \
 ```bash
 # Check container app status
 az containerapp show \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --query "properties.runningStatus"
 
 # Check logs for errors
 az containerapp logs show \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --type system
 ```
@@ -62,7 +62,7 @@ az containerapp logs show \
 ```bash
 # Check current replica count
 az containerapp revision list \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --query "[].{Name:name, Replicas:properties.replicas, Active:properties.active}" -o table
 ```
@@ -77,7 +77,7 @@ az containerapp revision list \
 ```bash
 # Check AI service status
 az cognitiveservices account show \
-  --name artagenthffwg8l2aif \
+  --name artagent<suffix>aif \
   --resource-group rg-artagent-voice-agent-dev \
   --query "{name:name, state:properties.provisioningState, endpoint:properties.endpoint}"
 ```
@@ -113,7 +113,7 @@ dependencies
 ```bash
 # Check ACS resource
 az communication show \
-  --name acs-artagent-voice-agent-dev-hffwg8l2 \
+  --name acs-artagent-voice-agent-dev-<suffix> \
   --resource-group rg-artagent-voice-agent-dev
 ```
 
@@ -133,7 +133,7 @@ az communication show \
 # Verify email domain
 az communication email domain show \
   --domain-name AzureManagedDomain \
-  --email-service-name email-artagent-voice-agent-dev-hffwg8l2 \
+  --email-service-name email-artagent-voice-agent-dev-<suffix> \
   --resource-group rg-artagent-voice-agent-dev
 ```
 
@@ -147,12 +147,12 @@ az communication email domain show \
 ```bash
 # Check Key Vault access policies
 az keyvault show \
-  --name kv-hffwg8l2 \
+  --name kv-<suffix> \
   --query "properties.accessPolicies"
 
 # Or check RBAC assignments
 az role assignment list \
-  --scope "/subscriptions/094336d1-8e03-42a4-95dc-1085ed02d8d5/resourceGroups/rg-artagent-voice-agent-dev/providers/Microsoft.KeyVault/vaults/kv-hffwg8l2" \
+  --scope "/subscriptions/<subscription-id>/resourceGroups/rg-artagent-voice-agent-dev/providers/Microsoft.KeyVault/vaults/kv-<suffix>" \
   --output table
 ```
 
@@ -162,7 +162,7 @@ az role assignment list \
 az role assignment create \
   --role "Key Vault Secrets User" \
   --assignee <managed-identity-object-id> \
-  --scope "/subscriptions/094336d1-8e03-42a4-95dc-1085ed02d8d5/resourceGroups/rg-artagent-voice-agent-dev/providers/Microsoft.KeyVault/vaults/kv-hffwg8l2"
+  --scope "/subscriptions/<subscription-id>/resourceGroups/rg-artagent-voice-agent-dev/providers/Microsoft.KeyVault/vaults/kv-<suffix>"
 ```
 
 ---
@@ -175,7 +175,7 @@ az role assignment create \
 ```bash
 # Check Application Insights resource
 az monitor app-insights component show \
-  --app ai-hffwg8l2 \
+  --app ai-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --query "{name:name, connectionString:connectionString}"
 ```
@@ -204,13 +204,13 @@ Usage
 ```bash
 # Stream live logs
 az containerapp logs show \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --follow
 
 # Get logs from specific time
 az containerapp logs show \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --since 1h
 ```
@@ -273,14 +273,14 @@ dependencies
 ```bash
 # Restart all container apps
 az containerapp revision restart \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
-  --revision $(az containerapp revision list --name artagent-backend-hffwg8l2 -g rg-artagent-voice-agent-dev --query "[?properties.active].name" -o tsv)
+  --revision $(az containerapp revision list --name artagent-backend-<suffix> -g rg-artagent-voice-agent-dev --query "[?properties.active].name" -o tsv)
 
 az containerapp revision restart \
-  --name artagent-frontend-hffwg8l2 \
+  --name artagent-frontend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
-  --revision $(az containerapp revision list --name artagent-frontend-hffwg8l2 -g rg-artagent-voice-agent-dev --query "[?properties.active].name" -o tsv)
+  --revision $(az containerapp revision list --name artagent-frontend-<suffix> -g rg-artagent-voice-agent-dev --query "[?properties.active].name" -o tsv)
 ```
 
 ### Disable Voice Calling (Circuit Breaker)
@@ -288,7 +288,7 @@ az containerapp revision restart \
 ```bash
 # Scale backend to 0 replicas
 az containerapp update \
-  --name artagent-backend-hffwg8l2 \
+  --name artagent-backend-<suffix> \
   --resource-group rg-artagent-voice-agent-dev \
   --min-replicas 0 \
   --max-replicas 0

@@ -45,15 +45,15 @@ graph TB
 
 | Property | Value |
 |----------|-------|
-| **Resource Name** | acs-artagent-voice-agent-dev-hffwg8l2 |
+| **Resource Name** | acs-artagent-voice-agent-dev-<suffix> |
 | **Location** | global |
-| **Email Service** | email-artagent-voice-agent-dev-hffwg8l2 |
+| **Email Service** | email-artagent-voice-agent-dev-<suffix> |
 | **Email Domain** | AzureManagedDomain |
 
 ### Endpoint
 
 ```
-https://acs-artagent-voice-agent-dev-hffwg8l2.communication.azure.com
+https://acs-artagent-voice-agent-dev-<suffix>.communication.azure.com
 ```
 
 ---
@@ -75,18 +75,18 @@ from azure.identity import DefaultAzureCredential
 
 credential = DefaultAzureCredential()
 client = CallAutomationClient(
-    endpoint="https://acs-artagent-voice-agent-dev-hffwg8l2.communication.azure.com",
+    endpoint="https://acs-artagent-voice-agent-dev-<suffix>.communication.azure.com",
     credential=credential
 )
 
 # Webhook handler for incoming calls
 async def handle_incoming_call(event: dict):
     incoming_call_context = event["incomingCallContext"]
-    callback_url = "https://artagent-backend-hffwg8l2.eastus2.azurecontainerapps.io/api/callbacks"
+    callback_url = "https://artagent-backend-<suffix>.eastus2.azurecontainerapps.io/api/callbacks"
     
     # Answer with media streaming enabled
     media_streaming = MediaStreamingOptions(
-        transport_url="wss://artagent-backend-hffwg8l2.eastus2.azurecontainerapps.io/ws/media",
+        transport_url="wss://artagent-backend-<suffix>.eastus2.azurecontainerapps.io/ws/media",
         transport_type=MediaStreamingTransport.WEBSOCKET,
         content_type=MediaStreamingContent.AUDIO,
         audio_channel_type=MediaStreamingAudioChannel.MIXED,
@@ -302,7 +302,7 @@ from azure.identity import DefaultAzureCredential
 
 credential = DefaultAzureCredential()
 email_client = EmailClient(
-    endpoint="https://acs-artagent-voice-agent-dev-hffwg8l2.communication.azure.com",
+    endpoint="https://acs-artagent-voice-agent-dev-<suffix>.communication.azure.com",
     credential=credential
 )
 

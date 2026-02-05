@@ -55,7 +55,7 @@ from azure.ai.inference import ChatCompletionsClient
 
 credential = DefaultAzureCredential()
 client = ChatCompletionsClient(
-    endpoint="https://artagenthffwg8l2aif.cognitiveservices.azure.com/",
+    endpoint="https://artagent<suffix>aif.cognitiveservices.azure.com/",
     credential=credential
 )
 ```
@@ -83,7 +83,7 @@ from azure.identity import DefaultAzureCredential
 
 credential = DefaultAzureCredential()
 client = CallAutomationClient(
-    endpoint="https://acs-artagent-voice-agent-dev-hffwg8l2.communication.azure.com",
+    endpoint="https://acs-artagent-voice-agent-dev-<suffix>.communication.azure.com",
     credential=credential
 )
 ```
@@ -113,7 +113,7 @@ from azure.keyvault.secrets import SecretClient
 
 credential = DefaultAzureCredential()
 client = SecretClient(
-    vault_url="https://kv-hffwg8l2.vault.azure.net/",
+    vault_url="https://kv-<suffix>.vault.azure.net/",
     credential=credential
 )
 
@@ -140,7 +140,7 @@ from azure.appconfiguration import AzureAppConfigurationClient
 
 credential = DefaultAzureCredential()
 client = AzureAppConfigurationClient(
-    base_url="https://appconfig-voice-agent-dev-hffwg8l2.azconfig.io",
+    base_url="https://appconfig-voice-agent-dev-<suffix>.azconfig.io",
     credential=credential
 )
 
@@ -168,7 +168,7 @@ from azure.storage.blob import BlobServiceClient
 
 credential = DefaultAzureCredential()
 client = BlobServiceClient(
-    account_url="https://sthffwg8l2.blob.core.windows.net/",
+    account_url="https://st<suffix>.blob.core.windows.net/",
     credential=credential
 )
 ```

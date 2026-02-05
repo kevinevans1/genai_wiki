@@ -55,7 +55,7 @@ graph TB
 ## Infrastructure Dependencies
 
 ### Azure Subscription
-- **Subscription**: AI_Foundry (`094336d1-8e03-42a4-95dc-1085ed02d8d5`)
+- **Subscription**: AI_Foundry (`<subscription-id>`)
 - **Required Quotas**: Container Apps, AI Services, Communication Services
 
 ### Resource Providers
@@ -136,9 +136,9 @@ graph LR
 
 | Service | Image | Registry |
 |---------|-------|----------|
-| Frontend | `rtaudio-client:latest` | crartagenthffwg8l2.azurecr.io |
-| Backend | `rtaudio-server:latest` | crartagenthffwg8l2.azurecr.io |
-| WebChat | `webchat-demo:latest` | crartagenthffwg8l2.azurecr.io |
+| Frontend | `rtaudio-client:latest` | crartagent<suffix>.azurecr.io |
+| Backend | `rtaudio-server:latest` | crartagent<suffix>.azurecr.io |
+| WebChat | `webchat-demo:latest` | crartagent<suffix>.azurecr.io |
 
 ---
 

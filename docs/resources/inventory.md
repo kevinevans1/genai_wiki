@@ -23,21 +23,21 @@ Complete inventory of resources in `rg-artagent-voice-agent-dev`.
 
 | Resource Name | Service Name | Purpose |
 |---------------|--------------|---------|
-| `artagent-frontend-hffwg8l2` | rtaudio-client | Web-based voice interface frontend |
-| `artagent-backend-hffwg8l2` | rtaudio-server | Real-time audio processing backend |
-| `webchat-demo-hffwg8l2` | - | Web chat demonstration interface |
+| `artagent-frontend-<suffix>` | rtaudio-client | Web-based voice interface frontend |
+| `artagent-backend-<suffix>` | rtaudio-server | Real-time audio processing backend |
+| `webchat-demo-<suffix>` | - | Web chat demonstration interface |
 
 ### Container App Environment
 
 | Resource Name | Location | Purpose |
 |---------------|----------|---------|
-| `cae-artagent-voice-agent-dev-hffwg8l2` | eastus2 | Shared hosting environment for all Container Apps |
+| `cae-artagent-voice-agent-dev-<suffix>` | eastus2 | Shared hosting environment for all Container Apps |
 
 ### Container Registry
 
 | Resource Name | SKU | Purpose |
 |---------------|-----|---------|
-| `crartagenthffwg8l2` | Basic | Container image storage and management |
+| `crartagent<suffix>` | Basic | Container image storage and management |
 
 ---
 
@@ -47,8 +47,8 @@ Complete inventory of resources in `rg-artagent-voice-agent-dev`.
 
 | Resource Name | Kind | SKU | Purpose |
 |---------------|------|-----|---------|
-| `artagenthffwg8l2aif` | AIServices | S0 | AI Foundry Hub - cognitive services endpoint |
-| `artagenthffwg8l2aif/artagent-hffwg8l2-aif-proj` | AIServices | - | AI Project for model deployments |
+| `artagent<suffix>aif` | AIServices | S0 | AI Foundry Hub - cognitive services endpoint |
+| `artagent<suffix>aif/artagent-<suffix>-aif-proj` | AIServices | - | AI Project for model deployments |
 
 **Capabilities**:
 - Real-time speech-to-text
@@ -62,8 +62,8 @@ Complete inventory of resources in `rg-artagent-voice-agent-dev`.
 
 | Resource Name | Type | Location | Purpose |
 |---------------|------|----------|---------|
-| `acs-artagent-voice-agent-dev-hffwg8l2` | Communication Services | global | Voice calling, PSTN connectivity |
-| `email-artagent-voice-agent-dev-hffwg8l2` | Email Services | global | Email sending capabilities |
+| `acs-artagent-voice-agent-dev-<suffix>` | Communication Services | global | Voice calling, PSTN connectivity |
+| `email-artagent-voice-agent-dev-<suffix>` | Email Services | global | Email sending capabilities |
 | `AzureManagedDomain` | Email Domain | global | Azure-managed email domain for sending |
 
 ---
@@ -74,14 +74,14 @@ Complete inventory of resources in `rg-artagent-voice-agent-dev`.
 
 | Resource Name | Location | Purpose |
 |---------------|----------|---------|
-| `kv-hffwg8l2` | eastus2 | Secrets, keys, and certificates management |
+| `kv-<suffix>` | eastus2 | Secrets, keys, and certificates management |
 
 ### Managed Identities
 
 | Resource Name | Associated Service | Purpose |
 |---------------|-------------------|---------|
-| `artagent-backend-hffwg8l2` | Backend Container App | Service authentication |
-| `artagent-frontend-hffwg8l2` | Frontend Container App | Service authentication |
+| `artagent-backend-<suffix>` | Backend Container App | Service authentication |
+| `artagent-frontend-<suffix>` | Frontend Container App | Service authentication |
 
 ---
 
@@ -91,13 +91,13 @@ Complete inventory of resources in `rg-artagent-voice-agent-dev`.
 
 | Resource Name | SKU | Purpose |
 |---------------|-----|---------|
-| `appconfig-voice-agent-dev-hffwg8l2` | Standard | Centralized configuration management |
+| `appconfig-voice-agent-dev-<suffix>` | Standard | Centralized configuration management |
 
 ### Storage Account
 
 | Resource Name | Kind | SKU | Purpose |
 |---------------|------|-----|---------|
-| `sthffwg8l2` | StorageV2 | Standard_LRS | Blob storage for audio files, logs |
+| `st<suffix>` | StorageV2 | Standard_LRS | Blob storage for audio files, logs |
 
 ---
 
@@ -107,13 +107,13 @@ Complete inventory of resources in `rg-artagent-voice-agent-dev`.
 
 | Resource Name | Kind | Purpose |
 |---------------|------|---------|
-| `ai-hffwg8l2` | web | Application performance monitoring, distributed tracing |
+| `ai-<suffix>` | web | Application performance monitoring, distributed tracing |
 
 ### Log Analytics Workspace
 
 | Resource Name | Purpose |
 |---------------|---------|
-| `log-hffwg8l2` | Centralized log aggregation and querying |
+| `log-<suffix>` | Centralized log aggregation and querying |
 
 ---
 
@@ -128,7 +128,7 @@ All resources share consistent tagging:
   "hidden-title": "Real Time Audio voice-agent-dev",
   "azd-env-name": "voice-agent-dev",
   "deployment": "terraform",
-  "deployed_by": "kevinevans1 <kevin.evans@codetocloud.io>",
+  "deployed_by": "<deployed-by>",
   "SecurityControl": "Ignore"
 }
 ```

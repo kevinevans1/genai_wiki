@@ -69,11 +69,11 @@ When writing code examples:
 | Resource | Name | Purpose |
 |----------|------|---------|
 | Resource Group | rg-artagent-voice-agent-dev | Container for all resources |
-| AI Hub | artagenthffwg8l2aif | AI services endpoint |
-| Communication Services | acs-artagent-voice-agent-dev-hffwg8l2 | Voice/calling |
-| Container Apps Env | cae-artagent-voice-agent-dev-hffwg8l2 | App hosting |
-| Key Vault | kv-hffwg8l2 | Secrets management |
-| App Configuration | appconfig-voice-agent-dev-hffwg8l2 | Runtime config |
+| AI Hub | artagent<suffix>aif | AI services endpoint |
+| Communication Services | acs-artagent-voice-agent-dev-<suffix> | Voice/calling |
+| Container Apps Env | cae-artagent-voice-agent-dev-<suffix> | App hosting |
+| Key Vault | kv-<suffix> | Secrets management |
+| App Configuration | appconfig-voice-agent-dev-<suffix> | Runtime config |
 
 ### Naming Convention
 
@@ -85,7 +85,7 @@ Where:
 - `type`: Resource type abbreviation (rg, kv, st, cr, etc.)
 - `project`: artagent or voice-agent
 - `environment`: voice-agent-dev
-- `suffix`: hffwg8l2 (unique deployment identifier)
+- `suffix`: <suffix> (unique deployment identifier)
 
 ## Common Tasks
 

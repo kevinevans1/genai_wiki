@@ -18,10 +18,10 @@ graph TB
     end
     
     subgraph "Azure AI Foundry"
-        HUB[AI Hub<br/>artagenthffwg8l2aif]
+        HUB[AI Hub<br/>artagent<suffix>aif]
         
         subgraph "AI Project"
-            PROJ[artagent-hffwg8l2-aif-proj]
+            PROJ[artagent-<suffix>-aif-proj]
             STT[Speech-to-Text<br/>Whisper]
             GPT[GPT-4o / GPT-4<br/>Chat Completion]
             TTS[Text-to-Speech<br/>Neural Voice]
@@ -41,8 +41,8 @@ graph TB
 
 | Property | Value |
 |----------|-------|
-| **AI Hub Name** | artagenthffwg8l2aif |
-| **AI Project** | artagent-hffwg8l2-aif-proj |
+| **AI Hub Name** | artagent<suffix>aif |
+| **AI Project** | artagent-<suffix>-aif-proj |
 | **Location** | eastus2 |
 | **SKU** | S0 |
 | **Kind** | AIServices |
@@ -50,7 +50,7 @@ graph TB
 ### Endpoint
 
 ```
-https://artagenthffwg8l2aif.cognitiveservices.azure.com/
+https://artagent<suffix>aif.cognitiveservices.azure.com/
 ```
 
 ---
@@ -112,7 +112,7 @@ from azure.identity import DefaultAzureCredential
 
 credential = DefaultAzureCredential()
 client = ChatCompletionsClient(
-    endpoint="https://artagenthffwg8l2aif.cognitiveservices.azure.com/",
+    endpoint="https://artagent<suffix>aif.cognitiveservices.azure.com/",
     credential=credential
 )
 

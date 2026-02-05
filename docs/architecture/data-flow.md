@@ -125,7 +125,7 @@ sequenceDiagram
 graph LR
     subgraph "Configuration Sources"
         AC[App Configuration<br/>appconfig-voice-agent-dev]
-        KV[Key Vault<br/>kv-hffwg8l2]
+        KV[Key Vault<br/>kv-<suffix>]
         ENV[Environment<br/>Variables]
     end
     
@@ -169,11 +169,11 @@ graph TB
     end
     
     subgraph "Ingestion"
-        AI[Application Insights<br/>ai-hffwg8l2]
+        AI[Application Insights<br/>ai-<suffix>]
     end
     
     subgraph "Storage & Analysis"
-        LOG[Log Analytics<br/>log-hffwg8l2]
+        LOG[Log Analytics<br/>log-<suffix>]
         DASH[Dashboards]
         ALERTS[Alerts]
     end
@@ -205,7 +205,7 @@ graph TB
 ### Blob Storage Organization
 
 ```
-sthffwg8l2/
+st<suffix>/
 ├── audio-recordings/
 │   ├── 2026/
 │   │   ├── 02/

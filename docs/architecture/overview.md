@@ -117,8 +117,8 @@ graph TB
 ```mermaid
 graph LR
     subgraph "Azure AI Foundry"
-        HUB[AI Hub<br/>artagenthffwg8l2aif]
-        PROJ[AI Project<br/>artagent-hffwg8l2-aif-proj]
+        HUB[AI Hub<br/>artagent<suffix>aif]
+        PROJ[AI Project<br/>artagent-<suffix>-aif-proj]
         
         subgraph "Capabilities"
             STT[Speech-to-Text]

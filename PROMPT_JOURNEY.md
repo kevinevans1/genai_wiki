@@ -16,7 +16,7 @@ Demonstrate how GitHub Copilot can be used as an engineering assistant to automa
 
 **Prompt:**
 ```
-do we have access to azure if so do a lookup on the subscription and give me the resource groups
+Do we have access to Azure? If so, look up my subscriptions and list the resource groups.
 ```
 
 **What Copilot Did:**
@@ -32,7 +32,7 @@ do we have access to azure if so do a lookup on the subscription and give me the
 
 **Prompt:**
 ```
-whats in the sub ai foundry ?
+What's in the AI Foundry subscription?
 ```
 
 **What Copilot Did:**
@@ -48,7 +48,7 @@ whats in the sub ai foundry ?
 
 **Prompt:**
 ```
-whats in the rg-artagent-voice-agent-dev
+What's in the rg-artagent-voice-agent-dev resource group?
 ```
 
 **What Copilot Did:**
@@ -64,11 +64,11 @@ whats in the rg-artagent-voice-agent-dev
 
 **Prompt:**
 ```
-ok awesome lets use that resource group for context basically i demonstrate that we can use 
-github copilot and github copilot sdk to be engineering call wiki and document the resource 
-group the integrations, the dependencies, the runtimes and generate diagrams and full suit 
-of documentation for the resource group and give an overview of what the architecture does, 
-i want this repo and wiki to structured with best practices with llm instruction file
+Let's use that resource group as context. I want to demonstrate how GitHub Copilot and 
+the GitHub Copilot SDK can serve as an engineering wiki. Document the resource group 
+including: integrations, dependencies, runtimes, architecture diagrams, and a full suite 
+of documentation. Give an overview of what the architecture does. Structure this repo 
+and wiki following best practices, and include an LLM instruction file.
 ```
 
 **What Copilot Did:**
@@ -114,7 +114,7 @@ use boxes for the architecture diagram
 
 **Prompt:**
 ```
-we need line boxes the current state does not help the reader
+We need bordered boxes with lines—the current diagram doesn't help the reader.
 ```
 
 **What Copilot Did:**
@@ -123,7 +123,7 @@ we need line boxes the current state does not help the reader
 
 **Prompt:**
 ```
-so no mermaid diagrams at all i can still see some
+No Mermaid diagrams at all—I can still see some remaining.
 ```
 
 **What Copilot Did:**
@@ -138,7 +138,7 @@ so no mermaid diagrams at all i can still see some
 
 **Prompt:**
 ```
-now create a prompt readme file, edited of course with prompt steps on how we got here
+Now create a prompt journey file documenting the steps and prompts we used to get here.
 ```
 
 **What Copilot Did:**
