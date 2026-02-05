@@ -397,12 +397,18 @@ Found this useful? Have improvements?
 - 🐛 **Open an issue** for questions or suggestions
 - 🔀 **Submit a PR** with improvements to the prompts or documentation
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
 ---
 
 ## 📜 License
 
-This project is provided as-is for educational purposes. The documented infrastructure is a fictional scenario for demonstration.
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and share.
 
 ---
+
+## ✍️ Author
+
+**Kevin Evans** — [Code to Cloud](https://codetocloud.io)
 
 *Built with GitHub Copilot (Claude Opus 4.5) + Azure MCP Servers — February 2026*
